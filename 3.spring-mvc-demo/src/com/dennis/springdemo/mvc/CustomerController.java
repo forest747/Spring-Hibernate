@@ -18,17 +18,15 @@ public class CustomerController {
 	// add an initbinder ... to convert trim input string
 	// remove init and trailing whitespace
 	// resolve issue for our validation
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
-		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true); // true means trim to null. 
-		
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true); // true means trim to null.
+
 		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-		
+
 	}
-	
-	
-	
+
 	@RequestMapping("/showForm")
 	public String showForm(Model theModel) {
 
@@ -40,8 +38,10 @@ public class CustomerController {
 	@RequestMapping("processForm")
 	public String processForm(@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult) {
 
-		
 		System.out.println("Last Name: |" + theCustomer.getLastName() + "|");
+		
+		System.out.println("Binding result: " + theBindingResult);
+		
 		if (theBindingResult.hasErrors()) {
 			return "customer-form";
 		} else {
