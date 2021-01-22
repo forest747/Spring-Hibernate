@@ -20,6 +20,11 @@ Free passes: ${customer.freePasses}
 
 Postal code: ${customer.postalCode}
 
+<br><br>
+
+Course code: ${customer.courseCode}
+
+<br><br>
 </body>
 
 </html>
